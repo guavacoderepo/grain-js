@@ -1,12 +1,12 @@
-const HealthTips = require("../models/HealthTips");
+const Facilities = require("../models/facilities");
 const ErrorResponse = require("../utils/errorResponse");
 
 // @Desc      Add new health tips
-// @Route     Post api/v1/healthtips/
+// @Route     Post api/v1/Facilities/
 // @Access    Private
-exports.handleAddHealthTips = async (req, res, next) => {
+exports.handleAddFacilities = async (req, res, next) => {
   try {
-    const data = await HealthTips.create(req.body);
+    const data = await Facilities.create(req.body);
 
     res.status(200).json({ status: true, data });
   } catch (err) {
@@ -15,11 +15,11 @@ exports.handleAddHealthTips = async (req, res, next) => {
 };
 
 // @Desc      Get all health tips
-// @Route     GET api/v1/healthtips/
+// @Route     GET api/v1/Facilities/
 // @Access    Private
-exports.handleGetAllHealthTips = async (req, res, next) => {
+exports.handleGetAllFacilities = async (req, res, next) => {
   try {
-    const data = await HealthTips.find(req.query);
+    const data = await Facilities.find(req.query);
 
     res.status(200).json({ status: true, count: data.length, data });
   } catch (err) {
@@ -28,12 +28,12 @@ exports.handleGetAllHealthTips = async (req, res, next) => {
 };
 
 // @Desc      Get Single health tips
-// @Route     GET api/v1/healthtips/:id
+// @Route     GET api/v1/Facilities/:id
 // @Access    Private
-exports.handleGetOneHealthTips = async (req, res, next) => {
+exports.handleGetOneFacilities = async (req, res, next) => {
   try {
-    const data = await HealthTips.findById(req.params.id);
- 
+    const data = await Facilities.findById(req.params.id);
+
     // check is id is valid
     if (!data) {
       return next(new ErrorResponse("invalid id", 404));
@@ -46,11 +46,11 @@ exports.handleGetOneHealthTips = async (req, res, next) => {
 };
 
 // @Desc      Put Single health tips
-// @Route     PUT api/v1/healthtips/:id
+// @Route     PUT api/v1/Facilities/:id
 // @Access    Private
-exports.handleUpdateHealthTips = async (req, res, next) => {
+exports.handleUpdateFacilities = async (req, res, next) => {
   try {
-    const data = await HealthTips.findByIdAndUpdate(req.params.id, req.body, {
+    const data = await Facilities.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
@@ -67,13 +67,11 @@ exports.handleUpdateHealthTips = async (req, res, next) => {
 };
 
 // @Desc      Delete Single health tips
-// @Route     DELETE api/v1/healthtips/:id
+// @Route     DELETE api/v1/Facilities/:id
 // @Access    Private
-exports.handleDeleteHealthTips = async (req, res, next) => {
-
-
+exports.handleDeleteFacilities = async (req, res, next) => {
   try {
-    const data = await HealthTips.findByIdAndDelete(req.params.id);
+    const data = await Facilities.findByIdAndDelete(req.params.id);
 
     // check is id is valid
     if (!data) {

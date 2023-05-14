@@ -1,12 +1,12 @@
-const Weightloss = require("../models/Weightloss");
+const Farmers = require("../models/farmer");
 const ErrorResponse = require("../utils/errorResponse");
 
 // @Desc      Add new health tips
-// @Route     Post api/v1/Weightloss/
+// @Route     Post api/v1/Farmers/
 // @Access    Private
-exports.handleAddWeightloss = async (req, res, next) => {
+exports.handleAddFarmers = async (req, res, next) => {
   try {
-    const data = await Weightloss.create(req.body);
+    const data = await Farmers.create(req.body);
 
     res.status(200).json({ status: true, data });
   } catch (err) {
@@ -15,11 +15,11 @@ exports.handleAddWeightloss = async (req, res, next) => {
 };
 
 // @Desc      Get all health tips
-// @Route     GET api/v1/Weightloss/
+// @Route     GET api/v1/Farmers/
 // @Access    Private
-exports.handleGetAllWeightloss = async (req, res, next) => {
+exports.handleGetAllFarmers = async (req, res, next) => {
   try {
-    const data = await Weightloss.find(req.query);
+    const data = await Farmers.find(req.query);
 
     res.status(200).json({ status: true, count: data.length, data });
   } catch (err) {
@@ -28,11 +28,11 @@ exports.handleGetAllWeightloss = async (req, res, next) => {
 };
 
 // @Desc      Get Single health tips
-// @Route     GET api/v1/Weightloss/:id
+// @Route     GET api/v1/Farmers/:id
 // @Access    Private
-exports.handleGetOneWeightloss = async (req, res, next) => {
+exports.handleGetOneFarmers = async (req, res, next) => {
   try {
-    const data = await Weightloss.findById(req.params.id);
+    const data = await Farmers.findById(req.params.id);
 
     // check is id is valid
     if (!data) {
@@ -46,21 +46,14 @@ exports.handleGetOneWeightloss = async (req, res, next) => {
 };
 
 // @Desc      Put Single health tips
-// @Route     PUT api/v1/Weightloss/:id
+// @Route     PUT api/v1/Farmers/:id
 // @Access    Private
-exports.handleUpdateWeightloss = async (req, res, next) => {
-
-    
+exports.handleUpdateFarmers = async (req, res, next) => {
   try {
-    const data = await Weightloss.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-
+    const data = await Farmers.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
 
     // check is id is valid
     if (!data) {
@@ -74,11 +67,11 @@ exports.handleUpdateWeightloss = async (req, res, next) => {
 };
 
 // @Desc      Delete Single health tips
-// @Route     DELETE api/v1/Weightloss/:id
+// @Route     DELETE api/v1/Farmers/:id
 // @Access    Private
-exports.handleDeleteWeightloss = async (req, res, next) => {
+exports.handleDeleteFarmers = async (req, res, next) => {
   try {
-    const data = await Weightloss.findByIdAndDelete(req.params.id);
+    const data = await Farmers.findByIdAndDelete(req.params.id);
 
     // check is id is valid
     if (!data) {

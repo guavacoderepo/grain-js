@@ -1,5 +1,5 @@
 const express = require("express");
-const protect = require("../middlewares/authmiddleware")
+const protect = require("../middlewares/authmiddleware");
 const {
   handleLogin,
   handleRegister,
@@ -7,15 +7,14 @@ const {
   handleChangePassword,
   handleResetPasswordToken,
   handleResetPassword,
-  handleFetchme
+  handleFetchme,
 } = require("../controllers/authController");
-
 
 const router = express.Router();
 
 router.post("/register", handleRegister);
 router.post("/login", handleLogin);
-router.get("/me", protect,handleFetchme);
+router.get("/me", protect, handleFetchme);
 router.put("/forgotpassword", handleForgotPassword);
 router.put("/resetpasswordtoken/:resettoken", handleResetPasswordToken);
 router.get("/resetpasswordtoken/:resettoken", handleResetPasswordToken);
