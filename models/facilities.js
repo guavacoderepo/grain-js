@@ -14,22 +14,27 @@ const faciitiesSchema = mongoose.Schema(
       trim: true,
     },
 
-    owner: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Users",
-      required: [true, "user can not but empty"],
-    },
-
     description: {
       type: String,
       required: [true, "description can not but empty"],
       trim: true,
     },
 
-    number: {
+    tel: {
       type: String,
       required: [true, "number can not but empty"],
       trim: true,
+    },
+
+    owner: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Users",
+      required: [true, "user can not but empty"],
+    },
+
+    imgUrl: {
+      type: String,
+      default: null,
     },
   },
 
