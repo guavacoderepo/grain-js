@@ -8,6 +8,12 @@ const faciitiesSchema = mongoose.Schema(
       trim: true,
     },
 
+    name: {
+      type: String,
+      required: [true, "name can not but empty"],
+      trim: true,
+    },
+
     location: {
       type: String,
       required: [true, "location can not but empty"],
