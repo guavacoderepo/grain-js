@@ -9,6 +9,7 @@ const auth = require("./routes/auth");
 const user = require("./routes/users");
 const facilities = require("./routes/facilities");
 const famers = require("./routes/farmers");
+const notification = require("./routes/notification");
 
 // load dot env file
 dotenv.config({ path: "./config/config.env" });
@@ -24,6 +25,7 @@ app.use("/api/v1/auth", auth);
 app.use("/api/v1/user", user);
 app.use("/api/v1/facilities", facilities);
 app.use("/api/v1/famers", famers);
+app.use("/api/v1/notification", notification);
 
 // error handler
 app.use(errorHandler);
