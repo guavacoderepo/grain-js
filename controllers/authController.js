@@ -3,7 +3,7 @@ const ErrorResponse = require("../utils/errorResponse");
 const sendEmail = require("../utils/sendMail");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
-const { use } = require("../routes/users");
+
 
 // @Desc      Register a new user
 // @Route     Post api/v1/auth/register

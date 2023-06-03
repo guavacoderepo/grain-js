@@ -61,9 +61,61 @@ exports.handleUpdateUser = async (req, res, next) => {
   res.status(200).json({ status: true });
 };
 
+// @Desc      Put bookmark
+// @Route     Post api/v1/bookmark/
+// @Access    Public
+exports.addBookmark = async (req, res, next) => {
+  const { id, userId } = req.body;
+
+  const user = await Users.findById(userId);
+
+  if (!user) {
+    return next(new ErrorResponse("invalid user id"));
+  }
+
+  if (user.bookmark.includes(id)) {
+    const index = await user.bookmark.indexOf(id);
+
+    await user.bookmark.splice(index, 1);
+
+    user.save();
+
+    return res.status(200).json({ status: true });
+  }
+
+  await user.bookmark.push(id);
+
+  user.save();
+
+  res.status(200).json({ status: true });
+};
+
+// @Desc      Put bookmark
+// @Route     Post api/v1/bookmark/
+// @Access    Public
+exports.getBookmark = async (req, res, next) => {
+  const { id } = req.params;
+
+  var data = [];
+
+  const user = await Users.findById(id);
+
+  if (!user) {
+    return next(new ErrorResponse("invalid user id"));
+  }
+
+  await user.bookmark.forEach(function (bookmark) {
+    console.log(bookmark);
+  });
+
+  res.status(200).json({ status: true });
+};
+
 // @Desc      Delete single user
 // @Route     Post api/v1/user/
 // @Access    Public
 exports.handleDeleteUser = (req, res, next) => {
   res.status(200).json({ msg: "delete user" });
 };
+
+// northenharm
